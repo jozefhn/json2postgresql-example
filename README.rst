@@ -16,12 +16,12 @@ Supply example json file: configClear.json
 Run scripts:
 create database table
 .. code:: bash
-    $poetry run create-table
+    $ poetry run create-table
 
 run main script (configClear.json is loaded)
 .. code:: bash
-    $poetry run main
+    $ poetry run main
 
 run main script (supply path to json file)
 .. code:: bash
-    $poetry run main /path/to/json
+    $ poetry run main /path/to/json
