@@ -2,7 +2,7 @@
 import json
 import jsonpath_ng
 import psycopg2
-from config import get_config
+from .config import get_config
 
 
 def get_connection():
@@ -29,16 +29,16 @@ def insert_interfaces(interfaces):
             cur.executemany(sql, interfaces)
 
 
-def get_json_data():
-    with open('configClear_v2.json') as file:
+def get_json_data(filename):
+    with open(filename) as file:
         return json.loads(file.read())
 
 
-def get_device_interfaces():
+def get_device_interfaces(filename):
     """ Iterates over device interfaces.
     Yields pair of values: interface group name, interface obj
     """
-    json_data = get_json_data()
+    json_data = get_json_data(filename)
     paths = [
         "'frinx-uniconfig-topology:configuration'.'Cisco-IOS-XE-native:native'.interface.'Port-channel'",
         "'frinx-uniconfig-topology:configuration'.'Cisco-IOS-XE-native:native'.interface.'TenGigabitEthernet'",
@@ -61,8 +61,14 @@ def format_interface_db(intf_group, intf):
 
 
 def main():
+    import sys
+    if len(sys.argv) > 1:
+        filename = sys.argv[1]
+    else:
+        filename = 'configClear_v2.json'
+
     interfaces = [format_interface_db(intfg, intf) for intfg, intf
-                  in get_device_interfaces()]
+                  in get_device_interfaces(filename)]
     insert_interfaces(interfaces)
     print("Added {} interfaces.".format(len(interfaces)))
 

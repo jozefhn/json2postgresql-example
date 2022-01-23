@@ -13,6 +13,8 @@ jsonpath-ng = "^1.5.3"
 
 [tool.poetry.scripts]
 create-table = "json2postgresql_example.create_table:main"
+main = "json2postgresql_example.main:main"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
