@@ -13,7 +13,7 @@ Install dependecies:
 
 Supply database credentials: database.ini
 
-Supply example json file: configClear.json
+Supply example json file: configClear_v2.json
 
 create database table
 
