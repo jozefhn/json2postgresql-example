@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import psycopg2
-from config import get_config
+from .config import get_config
 
 
 def create_tables():
@@ -33,6 +33,8 @@ def create_tables():
         if conn is not None:
             conn.close()
 
+def main():
+    create_tables()
 
 if __name__ == '__main__':
-    create_tables()
+    main()
