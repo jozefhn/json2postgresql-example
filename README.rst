@@ -5,7 +5,7 @@ Simple script that extracts desired data from json and stores it in postgreSQL d
 
 Install
 -------
-Install dependecies:
+Install dependencies:
 
 .. code-block:: bash
 
@@ -24,7 +24,7 @@ create database table
 Usage
 -----
 
-run main script (configClear.json is loaded)
+run main script (configClear_v2.json is loaded)
 
 .. code:: bash
 
